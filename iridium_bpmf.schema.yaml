@@ -68,15 +68,15 @@ speller:
     - xform/iu/iou/
     - xform/ui/uei/
     - xform/ong/ung/
-    - xform/yi?/i/
-    - xform/wu?/u/
+    - xform/^yi?/i/
+    - xform/^wu?/u/
     - xform/iu/v/
-    - xform/([jqx])u/$1v/
+    - xform/^([jqx])u/$1v/
     - xform/([iuv])n/$1en/
-    - xform/zhi?/Z/
-    - xform/chi?/C/
-    - xform/shi?/S/
-    - xform/([zcsr])i/$1/
+    - xform/^zhi?/Z/
+    - xform/^chi?/C/
+    - xform/^shi?/S/
+    - xform/^([zcsr])i/$1/
     - xform/ai/A/
     - xform/ei/I/
     - xform/ao/O/
@@ -124,8 +124,8 @@ custom_phrase:
   initial_quality: 1
 
 simp_zh_tw:
-    option_name: zh_tw
-    opencc_config: t2tw.json
+  option_name: zh_tw
+  opencc_config: t2tw.json
 simp_zh_cn:
   option_name: zh_cn
   opencc_config: t2s.json
