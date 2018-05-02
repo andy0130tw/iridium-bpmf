@@ -59,7 +59,8 @@ menu:
 
 speller:
   alphabet: '1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347'
-  initials: '1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/-'
+  # workaround for not accidentially selecting chars by num keys
+  initials: '1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/-6347'
   finals: ' 6347'
   delimiter: '|'
   use_space: true
@@ -124,10 +125,10 @@ custom_phrase:
   initial_quality: 1
 
 simp_zh_tw:
-  option_name: zh_tw
+  option_name: simp_zh_tw
   opencc_config: t2tw.json
 simp_zh_cn:
-  option_name: zh_cn
+  option_name: simp_zh_cn
   opencc_config: t2s.json
 
 # keep it as default for now
