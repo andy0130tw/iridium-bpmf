@@ -1,0 +1,249 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: iridium_bpmf
+  name: 銥式注音·臺灣正體
+  version: "1.0"
+  author:
+    - 佛振 <chen.sst@gmail.com>
+    - Andy Pan <andy0130tw@yahoo.com.tw>
+  description: |
+    參酌其它注音輸入法習慣、符合臺灣使用習慣為規準的注音輸入方案。
+
+    以 RIME 官方的 bopomofo_tw 方案為底稿。
+    https://github.com/andy0130tw/iridium-bpmf
+
+switches:
+  - name: ascii_mode
+    states: [ '中文', '英數' ]
+    reset: 1
+  - name: full_shape
+    states: [ '半形', '全形' ]
+    reset: 0
+  - name: ascii_punct
+    states: [ '。，', '．，' ]
+    reset: 0
+  - options: [ 'simp_zh_tw', 'simp_zh_cn' ]
+    states: [ '繁體', '简体' ]
+    reset: 0
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - fluency_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator@custom_phrase
+    - reverse_lookup_translator
+    - script_translator
+  filters:
+    - simplifier@simp_zh_tw
+    - simplifier@simp_zh_cn
+    - uniquifier
+
+menu:
+  alternative_select_keys: '1234567890'
+
+speller:
+  alphabet: '1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347'
+  initials: '1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/-'
+  finals: ' 6347'
+  delimiter: '|'
+  use_space: true
+  algebra:
+    - erase/^xx$/
+    - xform/iu/iou/
+    - xform/ui/uei/
+    - xform/ong/ung/
+    - xform/yi?/i/
+    - xform/wu?/u/
+    - xform/iu/v/
+    - xform/([jqx])u/$1v/
+    - xform/([iuv])n/$1en/
+    - xform/zhi?/Z/
+    - xform/chi?/C/
+    - xform/shi?/S/
+    - xform/([zcsr])i/$1/
+    - xform/ai/A/
+    - xform/ei/I/
+    - xform/ao/O/
+    - xform/ou/U/
+    - xform/ang/K/
+    - xform/eng/G/
+    - xform/an/M/
+    - xform/en/N/
+    - xform/er/R/
+    - xform/eh/E/
+    - xform/([iv])e/$1E/
+    # shortcuts
+    - abbrev/^([bpmfdtnlgkhjqxZCSrzcsiuv]).+$/$1/
+    - abbrev/^([bpmfdtnlgkhjqxZCSrzcsiuvaoeEAIOUMNKGR]+)\d$/$1/
+    - abbrev/^([bpmfdtnlgkhjqxZCSrzcsiuv]).+(\d)$/$1$2/
+    # allow interchanging the order of symbols
+    - derive/^([bpmfdtnlgkhjqxZCSrzcs])([iuv])/$2$1/
+    - derive/^([iuv])([aoeEAIOUMNKGR])/$2$1/
+    - derive/^([bpmfdtnlgkhjqxZCSrzcs])([aoeEAIOUMNKGR])/$2$1/
+    - derive/^([bpmfdtnlgkhjqxZCSrzcs])([iuv])([aoeEAIOUMNKGR])/$3$2$1/
+    - derive/^([bpmfdtnlgkhjqxZCSrzcs])([iuv])([aoeEAIOUMNKGR])/$3$1$2/
+    - derive/^([bpmfdtnlgkhjqxZCSrzcs])([iuv])([aoeEAIOUMNKGR])/$2$3$1/
+    - derive/^([bpmfdtnlgkhjqxZCSrzcs])([iuv])([aoeEAIOUMNKGR])/$1$3$2/
+    - 'xlit|bpmfdtnlgkhjqxZCSrzcsiuvaoeEAIOUMNKGR12345|1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347|'
+
+translator:
+  dictionary: iridium_bpmf_ext
+  prism: iridium_bpmf
+  preedit_format:
+    # recover the correct order of symbols
+    - 'xform|([ujm])([8ik,9ol.0p;/\-])([1qaz2wsxedcrfv5tgbyhn])|($3+$1$2)|'
+    - 'xform|([8ik,9ol.0p;/\-])([1qaz2wsxedcrfv5tgbyhn])([ujm])|($2$3+$1)|'
+    - 'xform|([8ik,9ol.0p;/\-])([ujm])([1qaz2wsxedcrfv5tgbyhn])|($3$2$1)|'
+    - 'xform|([ujm])([1qaz2wsxedcrfv5tgbyhn])|($2$1)|'
+    - 'xform|([8ik,9ol.0p;/\-])([ujm])|($2$1)|'
+    - 'xform|([8ik,9ol.0p;/\-])([1qaz2wsxedcrfv5tgbyhn])|($2$1)|'
+    - "xlit!1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347!ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦˉˊˇˋ˙!"
+
+custom_phrase:
+  dictionary: ''
+  user_dict: iridium_bpmf_phrase
+  db_class: stabledb
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: 1
+
+simp_zh_tw:
+    option_name: zh_tw
+    opencc_config: t2tw.json
+simp_zh_cn:
+  option_name: zh_cn
+  opencc_config: t2s.json
+
+# keep it as default for now
+punctuator:
+  full_shape:
+    ' ' : { commit: '　' }
+    '<' : { commit: '，' }
+    '>' : { commit: '。' }
+    '?' : [ '？', '／', '÷' ]
+    ':' : [ '：', '；' ]
+    "'" : { pair: [ '‘', '’' ] }
+    '"' : { pair: [ '“', '”' ] }
+    '\\' : [ '、', '＼' ]
+    '|' : [ '·', '｜', '§', '¦' ]
+    '`' : '｀'
+    '~' : '～'
+    '!' : { commit: '！' }
+    '@' : [ '＠', '☯' ]
+    '#' : [ '＃', '⌘' ]
+    '%' : [ '％', '°', '℃' ]
+    '$' : [ '￥', '$', '€', '£', '¥', '¢', '¤' ]
+    '^' : { commit: '……' }
+    '&' : '＆'
+    '*' : [ '＊', '·', '・', '×', '※', '❂' ]
+    '(' : '（'
+    ')' : '）'
+    '_' : [ '——', '－' ]
+    '+' : '＋'
+    '=' : '＝'
+    '[' : [ '「', '【', '《', '〔', '［' ]
+    ']' : [ '」', '】', '》', '〕', '］' ]
+    '{' : [ '『', '〖', '〈', '｛' ]
+    '}' : [ '』', '〗', '〉', '｝' ]
+  half_shape:
+    '<' : { commit: '，' }
+    '>' : { commit: '。' }
+    '?' : [ '？', '／', '/', '÷' ]
+    ':' : [ '：', '；' ]
+    "'" : { pair: [ '‘', '’' ] }
+    '"' : { pair: [ '“', '”' ] }
+    '\\' : [ '、', '\\', '＼' ]
+    '|' : [ '·', '|', '｜', '§', '¦' ]
+    '`' : '`'
+    '~' : '~'
+    '!' : { commit: '！' }
+    '@' : '@'
+    '#' : '#'
+    '%' : [ '%', ％, '°', '℃' ]
+    '$' : [ '￥', '$', '€', '£', '¥', '¢', '¤' ]
+    '^' : { commit: '……' }
+    '&' : '&'
+    '*' : [ '＊', '·', '・', '×', '※', '❂' ]
+    '(' : '（'
+    ')' : '）'
+    '_' : [ '——', '－', '-' ]
+    '+' : '+'
+    '=' : '='
+    '[' : [ '「', '【', '《', '〔', '［' ]
+    ']' : [ '」', '】', '》', '〕', '］' ]
+    '{' : [ '『', '〖', '〈', '｛' ]
+    '}' : [ '』', '〗', '〉', '｝' ]
+
+key_binder:
+  import_preset: default
+  bindings:
+    # force these keys to input phonemes
+    - { when: has_menu, accept: comma, send: comma }      # ㄝ
+    - { when: has_menu, accept: period, send: period }    # ㄡ
+    - { when: has_menu, accept: minus, send: minus }      # ㄦ
+
+    # override global binding
+    # - { when: has_menu, accept: equal, send: Down }
+    - { when: has_menu, accept: equal, send: equal }
+
+    # menu navigation keys
+    # these bindings are for VERTICAL layout, you may need to modify
+    # according to your preferred layout
+    - { when: has_menu, accept: Up, send: Page_Up }
+    - { when: has_menu, accept: Down, send: Page_Down }
+    - { when: has_menu, accept: Left, send: Up }
+    - { when: has_menu, accept: Right, send: Down }
+
+    # buffer navigation keys
+    - { when: composing, accept: bracketleft, send: Left }
+    - { when: composing, accept: bracketright, send: Right }
+
+    # directly choose menu item by `Shift+n`, you can turn on as many as
+    # the number of candidates there are
+    - { when: composing, accept: "Shift+exclam",      send: "Control+1" }
+    - { when: composing, accept: "Shift+at",          send: "Control+2" }
+    - { when: composing, accept: "Shift+numbersign",  send: "Control+3" }
+    - { when: composing, accept: "Shift+dollar",      send: "Control+4" }
+    - { when: composing, accept: "Shift+percent",     send: "Control+5" }
+    - { when: composing, accept: "Shift+asciicircum", send: "Control+6" }
+    - { when: composing, accept: "Shift+ampersand",   send: "Control+7" }
+    - { when: composing, accept: "Shift+asterisk",    send: "Control+8" }
+    # - { when: composing, accept: "Shift+parenleft",   send: "Control+9" }
+
+    # swap behavior when taking steps back
+    - { when: has_menu, accept: Shift+BackSpace, send: BackSpace }
+    - { when: has_menu, accept: BackSpace,       send: Control+BackSpace }
+
+recognizer:
+  patterns:
+    email: "^[a-z][-_.0-9a-z]*@.*$"
+    uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
+    url: "^(www[.]|https?:|ftp:|mailto:).*$"
+    reverse_lookup: "`[a-z]*'?$"
+
+ascii_composer/switch_key:
+  # swap the behavior of left and right shift
+  # compared to the original binding
+  Shift_L: commit_text
+  Shift_R: inline_ascii
+  Control_L: noop
+  Control_R: noop
+  # disable the (annoying) behavior to clear buffer with Caps lock
+  Caps_Lock: noop
+  Eisu_toggle: clear

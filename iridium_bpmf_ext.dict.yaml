@@ -1,0 +1,64 @@
+# Rime dictionary
+# encoding: utf-8
+#
+# A dictionary file as a stub; expanding the dictionary for the most basic use
+# cases for now
+
+---
+name: iridium_bpmf_ext
+version: '20180503'
+sort: by_weight
+use_preset_vocabulary: true
+import_tables:
+  - terra_pinyin
+...
+
+# `char+space` types phonemes
+ㄅ	b1
+ㄆ	p1
+ㄇ	m1
+ㄈ	f1
+ㄉ	d1
+ㄊ	t1
+ㄋ	n1
+ㄌ	l1
+ㄍ	g1
+ㄎ	k1
+ㄏ	h1
+ㄐ	j1
+ㄑ	q1
+ㄒ	x1
+ㄓ	zh1
+ㄔ	ch1
+ㄕ	sh1
+ㄖ	ri1
+ㄗ	zi1
+ㄘ	ci1
+ㄙ	si1
+ㄧ	yi1
+ㄨ	wu1
+ㄩ	iu1
+ㄚ	a1
+ㄛ	o1
+ㄜ	e1
+ㄝ	eh1
+ㄞ	ai1
+ㄟ	ei1
+ㄠ	ao1
+ㄡ	ou1
+ㄢ	an1
+ㄣ	en1
+ㄤ	ang1
+ㄥ	eng1
+ㄦ	er1
+
+# mimic the behavior of most input methods
+ˊ	2
+ˇ	3
+ˋ	4
+˙	5
+
+# preferred / added punct.
+一	yi1	34%
+一	yi2	33%
+一	yi4	33%

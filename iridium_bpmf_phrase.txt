@@ -1,0 +1,4 @@
+# Rime table
+#@/db_name	iridium_bpmf_phrase.txt
+#@/db_type	tabledb
+
