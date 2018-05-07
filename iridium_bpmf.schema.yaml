@@ -20,13 +20,10 @@ switches:
     reset: 1
   - name: full_shape
     states: [ '半形', '全形' ]
-    reset: 0
   - name: ascii_punct
     states: [ '。，', '．，' ]
-    reset: 0
-  - options: [ 'simp_zh_tw', 'simp_zh_cn' ]
+  - options: [ 'zh_hant_tw', 'zh_hans' ]
     states: [ '繁體', '简体' ]
-    reset: 0
 
 engine:
   processors:
@@ -114,7 +111,8 @@ translator:
     - 'xform|([ujm])([1qaz2wsxedcrfv5tgbyhn])|($2$1)|'
     - 'xform|([8ik,9ol.0p;/\-])([ujm])|($2$1)|'
     - 'xform|([8ik,9ol.0p;/\-])([1qaz2wsxedcrfv5tgbyhn])|($2$1)|'
-    - "xlit!1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347!ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦˉˊˇˋ˙!"
+    # the last character is U+2002, en space
+    - "xlit!1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347|!ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦˉˊˇˋ˙ !"
 
 custom_phrase:
   dictionary: ''
