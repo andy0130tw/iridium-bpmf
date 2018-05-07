@@ -9,6 +9,12 @@
 使用「東風破」 [`plum`](https://github.com/rime/plum) 安裝：`bash rime-install andy0130tw/iridium-bpmf` \
 注意：目前本方案尚依賴 [地球拼音](https://github.com/rime/rime-terra-pinyin) ℞ `terra-pinyin` 的字典檔。
 
+## 示範
+
+<p align="center">
+<img alt="demo gif" src="../assets/demo.gif">
+</p>
+
 ## 特色
 
 * 可不照聲介韻順序輸入，如「ㄋㄠㄧˇ」會自動修正為「ㄋㄧㄠˇ」，改進自 [RIME設定檔-注音（google注音+台灣注音習慣）](http://deltazone.pixnet.net/blog/post/264319309-%E9%BC%A0%E9%AC%9A%E7%AE%A1%E6%B3%A8%E9%9F%B3%E6%96%B9%E6%A1%88---%E7%AC%A6%E5%90%88%E4%B8%80%E8%88%AC%E6%B3%A8%E9%9F%B3%E4%BD%BF%E7%94%A8%E8%80%85%E7%BF%92%E6%85%A3%E8%A8%AD)。
