@@ -3,8 +3,8 @@
 
 schema:
   schema_id: iridium_bpmf
-  name: 銥式注音·臺灣正體
-  version: "1.0"
+  name: '銥 [Ir] 注音'
+  version: '1.0.0-beta1'
   author:
     - 佛振 <chen.sst@gmail.com>
     - Andy Pan <andy0130tw@yahoo.com.tw>
@@ -14,14 +14,15 @@ schema:
     以 RIME 官方的 bopomofo_tw 方案為底稿。
     https://github.com/andy0130tw/iridium-bpmf
 
+  dependencies:
+    - math_symbols
+
 switches:
   - name: ascii_mode
     states: [ '中文', '英數' ]
     reset: 1
   - name: full_shape
     states: [ '半形', '全形' ]
-  - name: ascii_punct
-    states: [ '。，', '．，' ]
   - options: [ 'zh_hant_tw', 'zh_hans' ]
     states: [ '繁體', '简体' ]
 
@@ -123,71 +124,77 @@ custom_phrase:
   initial_quality: 1
 
 simp_zh_tw:
-  option_name: simp_zh_tw
+  option_name: zh_hant_tw
   opencc_config: t2tw.json
 simp_zh_cn:
-  option_name: simp_zh_cn
+  option_name: zh_hans
   opencc_config: t2s.json
 
-# keep it as default for now
 punctuator:
   full_shape:
     ' ' : { commit: '　' }
     '<' : { commit: '，' }
     '>' : { commit: '。' }
     '?' : [ '？', '／', '÷' ]
-    ':' : [ '：', '；' ]
-    "'" : { pair: [ '‘', '’' ] }
-    '"' : { pair: [ '“', '”' ] }
-    '\\' : [ '、', '＼' ]
-    '|' : [ '·', '｜', '§', '¦' ]
-    '`' : '｀'
+    ':' : { commit: '：' }
+    "'" : { pair: ['‘', '’'] }
+    '"' : { pair: ['“', '”'] }
+    '\' : '＼'
+    '|' : [ '｜', '·', '§', '¦' ]
     '~' : '～'
     '!' : { commit: '！' }
     '@' : [ '＠', '☯' ]
     '#' : [ '＃', '⌘' ]
     '%' : [ '％', '°', '℃' ]
-    '$' : [ '￥', '$', '€', '£', '¥', '¢', '¤' ]
+    '$' : [ '＄', '￥', '€', '£', '¥', '¢', '¤' ]
     '^' : { commit: '……' }
     '&' : '＆'
     '*' : [ '＊', '·', '・', '×', '※', '❂' ]
     '(' : '（'
     ')' : '）'
-    '_' : [ '——', '－' ]
+    '_' : [ '＿', '——', '－' ]
     '+' : '＋'
     '=' : '＝'
-    '[' : [ '「', '【', '《', '〔', '［' ]
-    ']' : [ '」', '】', '》', '〕', '］' ]
-    '{' : [ '『', '〖', '〈', '｛' ]
-    '}' : [ '』', '〗', '〉', '｝' ]
+    '[' : [ '「', '《', '【', '〔', '［' ]
+    ']' : [ '」', '》', '】', '〕', '］' ]
+    '{' : [ '『', '〈', '〖', '｛' ]
+    '}' : [ '』', '〉', '〗', '｝' ]
   half_shape:
+    # still output some frequently used puncts in full-shape for convenience
     '<' : { commit: '，' }
     '>' : { commit: '。' }
-    '?' : [ '？', '／', '/', '÷' ]
-    ':' : [ '：', '；' ]
-    "'" : { pair: [ '‘', '’' ] }
-    '"' : { pair: [ '“', '”' ] }
-    '\\' : [ '、', '\\', '＼' ]
-    '|' : [ '·', '|', '｜', '§', '¦' ]
-    '`' : '`'
+    '?' : { commit: '？' }
+    ':' : { commit: '：' }
+    "'" : { commit: '、' }
+    '"' : { commit: '"' }
+    '\' : '\'
+    '|' : [ '|', '·', '｜', '§', '¦' ]
     '~' : '~'
     '!' : { commit: '！' }
     '@' : '@'
     '#' : '#'
-    '%' : [ '%', ％, '°', '℃' ]
-    '$' : [ '￥', '$', '€', '£', '¥', '¢', '¤' ]
-    '^' : { commit: '……' }
+    '%' : [ '%', '％', '°', '℃' ]
+    '$' : [ '$', '¥', '€', '£', '¢', '¤' ]
+    '^' : [ '^', '…', '……' ]
     '&' : '&'
-    '*' : [ '＊', '·', '・', '×', '※', '❂' ]
-    '(' : '（'
-    ')' : '）'
-    '_' : [ '——', '－', '-' ]
+    '*' : [ '*', '＊', '·', '・', '×', '※', '❂' ]
+    # personally I prefer half-shape parentheses
+    '(' : '('
+    ')' : ')'
+    '_' : [ '_', '——' ]
     '+' : '+'
     '=' : '='
-    '[' : [ '「', '【', '《', '〔', '［' ]
-    ']' : [ '」', '】', '》', '〕', '］' ]
-    '{' : [ '『', '〖', '〈', '｛' ]
-    '}' : [ '』', '〗', '〉', '｝' ]
+    '[' : [ '「', '《', '【', '〔', '［' ]
+    ']' : [ '」', '》', '】', '〕', '］' ]
+    '{' : [ '『','〈', '〖', '｛' ]
+    '}' : [ '』','〉', '〗', '｝' ]
+  symbols:
+    # be careful, a singleton list is different from a string
+    '`' : [ '`' ]
+    # to allow typing a single full-shape symbol in half-shape mode;
+    # commit mode is not supported here
+    '`(': { commit: '（' }
+    '`)': { commit: '）' }
 
 key_binder:
   import_preset: default
@@ -215,15 +222,15 @@ key_binder:
 
     # directly choose menu item by `Shift+n`, you can turn on as many as
     # the number of candidates there are
-    - { when: composing, accept: "Shift+exclam",      send: "Control+1" }
-    - { when: composing, accept: "Shift+at",          send: "Control+2" }
-    - { when: composing, accept: "Shift+numbersign",  send: "Control+3" }
-    - { when: composing, accept: "Shift+dollar",      send: "Control+4" }
-    - { when: composing, accept: "Shift+percent",     send: "Control+5" }
-    - { when: composing, accept: "Shift+asciicircum", send: "Control+6" }
-    - { when: composing, accept: "Shift+ampersand",   send: "Control+7" }
-    - { when: composing, accept: "Shift+asterisk",    send: "Control+8" }
-    # - { when: composing, accept: "Shift+parenleft",   send: "Control+9" }
+    - { when: has_menu, accept: Shift+exclam,      send: Control+1 }
+    - { when: has_menu, accept: Shift+at,          send: Control+2 }
+    - { when: has_menu, accept: Shift+numbersign,  send: Control+3 }
+    - { when: has_menu, accept: Shift+dollar,      send: Control+4 }
+    - { when: has_menu, accept: Shift+percent,     send: Control+5 }
+    - { when: has_menu, accept: Shift+asciicircum, send: Control+6 }
+    - { when: has_menu, accept: Shift+ampersand,   send: Control+7 }
+    - { when: has_menu, accept: Shift+asterisk,    send: Control+8 }
+    # - { when: has_menu, accept: Shift+parenleft,   send: Control+9 }
 
     # swap behavior when taking steps back
     - { when: has_menu, accept: Shift+BackSpace, send: BackSpace }
@@ -233,8 +240,7 @@ recognizer:
   patterns:
     email: "^[a-z][-_.0-9a-z]*@.*$"
     uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
-    url: "^(www[.]|https?:|ftp:|mailto:).*$"
-    reverse_lookup: "`[a-z]*'?$"
+    punct: '`[^\s]'
 
 ascii_composer:
   good_old_caps_lock: true
