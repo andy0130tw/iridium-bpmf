@@ -14,9 +14,6 @@ schema:
     以 RIME 官方的 bopomofo_tw 方案為底稿。
     https://github.com/andy0130tw/iridium-bpmf
 
-  dependencies:
-    - math_symbols
-
 switches:
   - name: ascii_mode
     states: [ '中文', '英數' ]
