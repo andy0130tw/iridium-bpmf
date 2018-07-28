@@ -85,24 +85,29 @@ speller:
     - xform/eh/E/
     - xform/([iv])e/$1E/
     # shortcuts
+    #   1. favor the correct order despite incomplete
     - abbrev/^([bpmfdtnlgkhjqxZCSrzcsiuv]).+$/$1/
+    #   2. allow omitting tones
     - abbrev/^([bpmfdtnlgkhjqxZCSrzcsiuvaoeEAIOUMNKGR]+)\d$/$1/
+    #   3. allow (partial phonemes + tone) matching
     - abbrev/^([bpmfdtnlgkhjqxZCSrzcsiuv]).+(\d)$/$1$2/
     # allow interchanging the order of symbols
     - derive/^([bpmfdtnlgkhjqxZCSrzcs])([iuv])/$2$1/
     - derive/^([iuv])([aoeEAIOUMNKGR])/$2$1/
     - derive/^([bpmfdtnlgkhjqxZCSrzcs])([aoeEAIOUMNKGR])/$2$1/
+    #   v-- these lines seems redundants but they are actually required for correct behaviors
     - derive/^([bpmfdtnlgkhjqxZCSrzcs])([iuv])([aoeEAIOUMNKGR])/$3$2$1/
     - derive/^([bpmfdtnlgkhjqxZCSrzcs])([iuv])([aoeEAIOUMNKGR])/$3$1$2/
     - derive/^([bpmfdtnlgkhjqxZCSrzcs])([iuv])([aoeEAIOUMNKGR])/$2$3$1/
     - derive/^([bpmfdtnlgkhjqxZCSrzcs])([iuv])([aoeEAIOUMNKGR])/$1$3$2/
+    # final substitutions
     - 'xlit|bpmfdtnlgkhjqxZCSrzcsiuvaoeEAIOUMNKGR12345|1qaz2wsxedcrfv5tgbyhnujm8ik,9ol.0p;/- 6347|'
 
 translator:
   dictionary: iridium_bpmf_ext
   prism: iridium_bpmf
   preedit_format:
-    # recover the correct order of symbols
+    # recover the canonical order of symbols
     - 'xform|([ujm])([8ik,9ol.0p;/\-])([1qaz2wsxedcrfv5tgbyhn])|($3+$1$2)|'
     - 'xform|([8ik,9ol.0p;/\-])([1qaz2wsxedcrfv5tgbyhn])([ujm])|($2$3+$1)|'
     - 'xform|([8ik,9ol.0p;/\-])([ujm])([1qaz2wsxedcrfv5tgbyhn])|($3$2$1)|'
