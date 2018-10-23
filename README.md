@@ -9,6 +9,14 @@
 使用「東風破」 [`plum`](https://github.com/rime/plum) 安裝：`bash rime-install andy0130tw/iridium-bpmf` \
 注意：目前本方案尚依賴 [地球拼音](https://github.com/rime/rime-terra-pinyin) ℞ `terra-pinyin` 的字典檔。
 
+安裝後請依照使用習慣與實際介面 **手動建立或調整 `default.custom.yaml`**，於 `patch:` 鍵中納入 `default.custom.yaml.ref` 中所示內容，這會修改全域設定，以便
+
+  1. 將此方案加到輸入法方案選單中
+  2. 修改選字/分頁按鍵，使之適用於橫式 (當介面如下圖示範才需要，直式不用)
+  3. 完整儲存此輸入法用到的選項，這乃是因為新舊版本間的 Rime 中儲存的鍵值有所出入
+
+修改完請在 Rime 選單中重新「部署 (deploy)」。
+
 ## 示範
 
 <p align="center">
@@ -25,4 +33,5 @@
 * 儘可能在設定檔中加上註解，使得客製化更加便利
 
 # 實驗
+
 一些與 RIME 有關的嘗試或實驗，為維護方便及維持此專案穩定性，會發佈在[另一個 repo](https://github.com/andy0130tw/aarrr-rime)，習慣本方案後可以搭配使用。

@@ -1,0 +1,27 @@
+patch:
+  # 1.
+  schema_list:
+    - schema: iridium_bpmf
+    # add more here
+
+  # 2.
+  key_binder/bindings:
+    # menu navigation keys
+    # these bindings are for HORIZONTAL layout, you may need to modify
+    # according to your preferred layout
+    - { when: has_menu, accept: Up, send: Page_Up }
+    - { when: has_menu, accept: Down, send: Page_Down }
+    - { when: has_menu, accept: Left, send: Up }
+    - { when: has_menu, accept: Right, send: Down }
+
+  # 3.
+  switcher/option_list_separator: ' / '
+  switcher/save_options:
+    - full_shape
+    - ascii_punct
+    - simplification
+    - extended_charset
+    - zh_hant
+    - zh_hans
+    - zh_hant_tw
+
