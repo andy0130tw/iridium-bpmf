@@ -9,19 +9,13 @@
 使用「東風破」 [`plum`](https://github.com/rime/plum) 安裝：`bash rime-install andy0130tw/iridium-bpmf` \
 注意：目前本方案尚依賴 [地球拼音](https://github.com/rime/rime-terra-pinyin) ℞ `terra-pinyin` 的字典檔。
 
-安裝後請依照使用習慣與實際介面 **手動建立或調整 `default.custom.yaml`**，於 `patch:` 鍵中納入 `default.custom.yaml.ref` 中所示內容，這會修改全域設定，以便
-
-  1. 將此方案加到輸入法方案選單中
-  2. 修改選字/分頁按鍵，使之適用於橫式 (當介面如下圖示範才需要，直式不用)
-  3. 完整儲存此輸入法用到的選項，這乃是因為新舊版本間的 Rime 中儲存的鍵值有所出入
-
-修改完請在 Rime 選單中重新「部署 (deploy)」。
-
 ## 示範
 
 <p align="center">
 <img alt="demo gif" src="../assets/demo.gif">
 </p>
+
+示範環境為 Pop!\_OS 18.04 搭配 gedit。
 
 ## 特色
 
@@ -32,6 +26,39 @@
 * 將原始 RIME 設計的左右 Shift 對調，使較常用的「左 Shift」的功能變為臨時西文模式
 * 儘可能在設定檔中加上註解，使得客製化更加便利
 
-# 實驗
+## 手動部署方法 (以 Ubuntu 搭配 ibus 為例)
 
+1. 將此專案拷貝到 `~/.config/ibus/rime` 下，並將需要的檔案符號連結至該目錄。
+
+   ```bash
+   git clone https://github.com/andy0130tw/iridium-bpmf
+   ln -s iridium-bpmf/iridium_bpmf.schema.yaml .
+   ln -s iridium-bpmf/iridium_bpmf_ext.dict.yaml .
+   ln -s iridium-bpmf/iridium_bpmf_phrase.txt .
+   ln -s iridium-bpmf/terra_pinyin.dict.yaml .
+   ```
+
+   (或是讀者若會使用 `xargs` 也可自行簡化此流程)
+
+2. 依照 `default.custom.yaml.ref` 新建或修改設定檔補丁 `default.custom.yaml`。
+   注意這個檔案預設使用者是使用橫向選字列表，然而這並非預設行為。如果要使用直向的配置，在此步驟將 `send` 參數的 `Page_{Up,Down}` 和其下兩行的對應參數交換。
+
+3. 在 Rime 選單上選擇部署。
+
+## 常見問題
+
+### 使用橫向候選字視窗
+就作者所知，在 Ubuntu 18.04 以後 ibus 候選字視窗不再遵照 `ibus-config` 內的方向設定，一律為直向。
+若要在 ibus 上使用橫向配置，請手動建立 `~/.config/ibus/rime/build/ibus_rime.yaml` 檔案，並加入以下內容，
+
+```yaml
+style:
+  horizontal: true
+```
+
+然後重新部署即可。
+
+[作者某天在整理 rime 設定檔的時候無意間查到的解法連結](https://forums.fedoraforum.org/showthread.php?320042-How-to-set-ibus-rime-to-horizontal-in-fedora-29&p=1819670#post1819670)。
+
+# 實驗
 一些與 RIME 有關的嘗試或實驗，為維護方便及維持此專案穩定性，會發佈在[另一個 repo](https://github.com/andy0130tw/aarrr-rime)，習慣本方案後可以搭配使用。
