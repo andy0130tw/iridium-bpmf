@@ -45,10 +45,28 @@
 
 3. 在 Rime 選單上選擇部署。
 
+4. 好耶<br>
+   ![好耶](https://user-images.githubusercontent.com/5269414/115489814-714fa480-a28f-11eb-8f9b-2af83d5551c4.png)
+
+# 已測試環境
+
+作者已在以下環境中測試，皆可以正常使用本方案，無明顯功能差異。
+
+* Ubuntu 18.04 LTS + GNOME + ibus
+* Ubuntu 20.04 LTS + GNOME + ibus
+* Ubuntu 18.04 LTS + Budgie + ibus (Budgie 的 ibus 選字視窗好漂亮)
+* Debian 10 + fcitx
+
+有在小狼毫或鼠鬚管配置過此方案的朋友，歡迎在 [Issue tracker](https://github.com/andy0130tw/iridium-bpmf/issues) 分享。
+
 ## 常見問題
 
-### 使用橫向候選字視窗
-就作者所知，在 Ubuntu 18.04 以後 ibus 候選字視窗不再遵照 `ibus-config` 內的方向設定，一律為直向。
+### 在 `ibus` 使用橫向候選字視窗
+
+就作者所知，在 Ubuntu 18.10 以後 ibus 候選字視窗不再遵照 `ibus-config` 內的方向設定，一律為直向。如圖所示：
+
+![直向選字視窗](https://user-images.githubusercontent.com/5269414/115489988-c2f82f00-a28f-11eb-8aab-a24e756899db.png)
+
 若要在 ibus 上使用橫向配置，請手動建立 `~/.config/ibus/rime/build/ibus_rime.yaml` 檔案，並加入以下內容，
 
 ```yaml
@@ -61,4 +79,5 @@ style:
 [作者某天在整理 rime 設定檔的時候無意間查到的解法連結](https://forums.fedoraforum.org/showthread.php?320042-How-to-set-ibus-rime-to-horizontal-in-fedora-29&p=1819670#post1819670)。
 
 # 實驗
+
 一些與 RIME 有關的嘗試或實驗，為維護方便及維持此專案穩定性，會發佈在[另一個 repo](https://github.com/andy0130tw/aarrr-rime)，習慣本方案後可以搭配使用。
