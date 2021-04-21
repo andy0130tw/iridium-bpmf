@@ -57,13 +57,13 @@
 * Ubuntu 18.04 LTS + Budgie + ibus (Budgie 的 ibus 選字視窗好漂亮)
 * Debian 10 + fcitx
 
-有在小狼毫或鼠鬚管配置過此方案的朋友，歡迎在 [Issue tracker](https://github.com/andy0130tw/iridium-bpmf/issues) 分享。
+有在小狼毫 (Windows) 或鼠鬚管 (Mac) 配置過此方案的朋友，歡迎在 [Issue tracker](https://github.com/andy0130tw/iridium-bpmf/issues) 分享。
 
 ## 常見問題
 
-### 在 `ibus` 使用橫向候選字視窗
+### 在 ibus 使用橫向選字列表
 
-就作者所知，在 Ubuntu 18.10 以後 ibus 候選字視窗不再遵照 `ibus-config` 內的方向設定，一律為直向。如圖所示：
+就作者所知，在 Ubuntu 18.10 以後 ibus 選字列表不再遵照 `ibus-config` 內的方向設定，一律為直向，如圖所示：
 
 ![直向選字視窗](https://user-images.githubusercontent.com/5269414/115489988-c2f82f00-a28f-11eb-8aab-a24e756899db.png)
 
