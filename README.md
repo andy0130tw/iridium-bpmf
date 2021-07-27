@@ -67,14 +67,14 @@
 
 ![直向選字視窗](https://user-images.githubusercontent.com/5269414/115489988-c2f82f00-a28f-11eb-8aab-a24e756899db.png)
 
-若要在 ibus 上使用橫向配置，請手動建立 `~/.config/ibus/rime/build/ibus_rime.yaml` 檔案，並加入以下內容，
+若要在 ibus 上使用橫向配置，請檢查 `~/.config/ibus/rime/build/ibus_rime.yaml` 檔案，如果不存在的話手動建立並加入以下內容，
 
 ```yaml
 style:
   horizontal: true
 ```
 
-然後重新部署即可。
+然後重新部署即可。似乎在某個特定版本的 `ibus-rime` 會自動建立這個檔案，則只要將 `horizontal` 屬性從 `false` 改成 `true` 就好。
 
 [作者某天在整理 rime 設定檔的時候無意間查到的解法連結](https://forums.fedoraforum.org/showthread.php?320042-How-to-set-ibus-rime-to-horizontal-in-fedora-29&p=1819670#post1819670)。
 
