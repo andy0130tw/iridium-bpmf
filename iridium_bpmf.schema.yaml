@@ -232,7 +232,6 @@ key_binder:
 
 recognizer:
   patterns:
-    email: "^[a-z][-_.0-9a-z]*@.*$"
     uppercase: "^[A-Z][-_+.'0-9A-Za-z]*$"
     punct: '`[^\s]'
 
