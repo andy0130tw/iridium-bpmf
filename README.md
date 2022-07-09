@@ -26,7 +26,9 @@
 * 將原始 RIME 設計的左右 Shift 對調，使較常用的「左 Shift」的功能變為臨時西文模式
 * 儘可能在設定檔中加上註解，使得客製化更加便利
 
-## 手動部署方法 (以 Ubuntu 搭配 ibus 為例)
+## 手動部署方法
+
+以 Ubuntu 搭配 ibus 為例：
 
 1. 將此專案拷貝到 `~/.config/ibus/rime` 下，並將需要的檔案符號連結至該目錄。
 
@@ -41,9 +43,13 @@
    (或是讀者若會使用 `xargs` 也可自行簡化此流程)
 
 2. 依照 `default.custom.yaml.ref` 新建或修改設定檔補丁 `default.custom.yaml`。
-   注意這個檔案預設使用者是使用橫向選字列表，然而這並非預設行為。如果要使用直向的配置，在此步驟將 `send` 參數的 `Page_{Up,Down}` 和其下兩行的對應參數交換。
 
-3. 在 Rime 選單上選擇部署。
+   * `schema_list`：將本方案加入已啟用的方案列表
+   * `key_binder/bindings`：修改有關移動選單游標的按鍵映射 \
+     注意這個檔案預設使用者是使用橫向選字列表，然而這並非預設行為。如果要使用直向的配置，在此步驟將 `send` 參數的 `Page_{Up,Down}` 和其下兩行的對應參數交換。
+   * `switcher`: 新增本方案會用到的開關
+
+3. 在 Rime 選單上選擇「部署」。
 
 4. 好耶<br>
    ![好耶](https://user-images.githubusercontent.com/5269414/115489814-714fa480-a28f-11eb-8f9b-2af83d5551c4.png)
@@ -58,6 +64,8 @@
 * Debian 10 + fcitx
 
 有在小狼毫 (Windows) 或鼠鬚管 (Mac) 配置過此方案的朋友，歡迎在 [Issue tracker](https://github.com/andy0130tw/iridium-bpmf/issues) 分享。
+
+> 2022/7/10: 作者入手了一臺 Macbook Air，目前使用鼠鬚管搭配此輸入方案，待測試妥善後會更新此文件。
 
 ## 常見問題
 
