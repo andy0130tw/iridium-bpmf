@@ -6,8 +6,11 @@
 
 配方： ℞ `iridium-bpmf`
 
-使用「東風破」 [`plum`](https://github.com/rime/plum) 安裝：`bash rime-install andy0130tw/iridium-bpmf` \
-注意：目前本方案尚依賴 [地球拼音](https://github.com/rime/rime-terra-pinyin) ℞ `terra-pinyin` 的字典檔。
+使用「東風破」 [`plum`](https://github.com/rime/plum) 安裝：`bash rime-install andy0130tw/iridium-bpmf`。
+
+### 字典檔
+
+目前本方案尚依賴 [地球拼音](https://github.com/rime/rime-terra-pinyin) ℞ `terra-pinyin` 的字典檔。推薦自行下載[洋蔥方案](https://github.com/oniondelta/Onion_Rime_Files/tree/main/allfiles)增補校對過的字典檔取代之。
 
 ## 示範
 
