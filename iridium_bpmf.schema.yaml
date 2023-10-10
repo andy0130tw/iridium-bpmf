@@ -4,7 +4,7 @@
 schema:
   schema_id: iridium_bpmf
   name: '銥 [Ir] 注音'
-  version: '1.0.0-beta5'
+  version: '1.0.0'
   author:
     - 佛振 <chen.sst@gmail.com>
     - Andy Pan <andy0130tw@yahoo.com.tw>
