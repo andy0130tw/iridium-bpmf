@@ -10,7 +10,7 @@ version: '20180503'
 sort: by_weight
 use_preset_vocabulary: true
 import_tables:
-  - terra_pinyin
+  - mcbopomofo
 ...
 
 # `char+space` types phonemes

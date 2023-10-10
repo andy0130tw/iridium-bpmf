@@ -10,7 +10,11 @@
 
 ### 字典檔
 
-目前本方案尚依賴 [地球拼音](https://github.com/rime/rime-terra-pinyin) ℞ `terra-pinyin` 的字典檔。推薦自行下載[洋蔥方案](https://github.com/oniondelta/Onion_Rime_Files/tree/main/allfiles)增補校對過的字典檔取代之。
+~~目前本方案尚依賴 [地球拼音](https://github.com/rime/rime-terra-pinyin) ℞ `terra-pinyin` 的字典檔。~~
+
+(2023/10/10) 內建詞庫改使用由[小麥注音輸入法](https://github.com/openvanilla/mcbopomofo/) (McBopomofo, MIT 授權) 經程式轉換而來的詞庫。此詞庫由臺灣人維護，且有定期編修，作者評估其讀音、詞彙、詞頻品質等方面，認為較適合做為預設詞庫檔。[轉換程式碼見此](https://gist.github.com/andy0130tw/37632b08f5a83ad913135896f08dcace)。
+
+使用者也可以自行下載[洋蔥方案](https://github.com/oniondelta/Onion_Rime_Files/tree/main/allfiles)增補校對過的字典檔取代之。
 
 ## 示範
 
@@ -37,10 +41,10 @@
 
    ```bash
    git clone https://github.com/andy0130tw/iridium-bpmf
-   ln -s iridium-bpmf/iridium_bpmf.schema.yaml .
-   ln -s iridium-bpmf/iridium_bpmf_ext.dict.yaml .
-   ln -s iridium-bpmf/iridium_bpmf_phrase.txt .
-   ln -s iridium-bpmf/terra_pinyin.dict.yaml .
+   ln -s iridium-bpmf/iridium_bpmf.schema.yaml
+   ln -s iridium-bpmf/iridium_bpmf_ext.dict.yaml
+   ln -s iridium-bpmf/iridium_bpmf_phrase.txt
+   ln -s iridium-bpmf/mcbopomofo.dict.yaml
    ```
 
    (或是讀者若會使用 `xargs` 也可自行簡化此流程)
