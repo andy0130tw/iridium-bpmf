@@ -4,7 +4,7 @@
 schema:
   schema_id: iridium_bpmf
   name: '銥 [Ir] 注音'
-  version: '1.0.0'
+  version: '1.0.1'
   author:
     - 佛振 <chen.sst@gmail.com>
     - Andy Pan <andy0130tw@yahoo.com.tw>
@@ -13,6 +13,9 @@ schema:
 
     以 RIME 官方的 bopomofo_tw 方案為底稿。
     https://github.com/andy0130tw/iridium-bpmf
+
+    詞庫來自小麥注音輸入法。
+    https://mcbopomofo.openvanilla.org/
 
 switches:
   - name: ascii_mode
