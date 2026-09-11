@@ -81,11 +81,12 @@
 
 ![直向選字視窗](https://user-images.githubusercontent.com/5269414/115489988-c2f82f00-a28f-11eb-8aab-a24e756899db.png)
 
-若要在 IBus 上使用橫向配置，必須明確於 `~/.config/ibus/rime/build/ibus_rime.yaml` 檔案指定，如果不存在的話手動建立並加入以下內容，
+若要在 IBus 上使用橫向配置，必須明確於 `~/.config/ibus/rime/ibus_rime.custom.yaml` 檔案指定，如果不存在的話手動建立並加入以下內容，
 
 ```yaml
-style:
-  horizontal: true
+patch:
+  style/+:
+    horizontal: true
 ```
 
 然後重新部署即可。如果檔案已經存在，則只要將 `horizontal` 屬性從 `false` 改成 `true` 就好。
